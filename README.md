@@ -1,1 +1,7 @@
-# SNN_image_classification
+# SNN image classification
+
+Artificial neural networks, in particular deep neural networks, are widely used models for solving machine learning problems. However, such networks are not biologically plausible. Spiking neural networks, on the other hand, use different methods of encoding and processing data, which makes their behavior more similar to brain activity. This motivated us to explore them in more detail and to solve the image classification problem comparing the results of spiking neural network with convolution neural network.
+
+The main framework of our project to create models is the Python package snnTorch. We used several datasets: SOCOFing, EMNIST, and Fashion-MNIST - to train and test our models. In the evaluation phase, we measured the accuracy, precision, recall, and F1-score for each case. From the results obtained for the SOCOFing dataset, we can conclude that SNN achieved higher results with an accuracy of 98% than CNN with an accuracy of 83%. For the EMNIST dataset, both models achieved high results with an accuracy of about 99%, but CNN performed a bit better. For the Fashion-MNIST dataset, the average accuracy of the models was approximately the same - 86%. However, the training of 1 epoch was more than 1.5 times longer with the SNN model.
+
+To run the program, one should use the token for Kaggle API. Using Kaggle's API, it is possible to download SOCOFing dataset.
