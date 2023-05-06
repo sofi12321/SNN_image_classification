@@ -16,7 +16,7 @@ Artificial neural networks, including deep neural networks, are widely used for 
 - EMNIST digits - a set of handwritten digits similar to the MNIST dataset, but 4 times larger. 
 - Fashion-MNIST - a set of 10 fashion products images. 
 
-![Datasets](./image.jpg)
+![image_2023-05-06_22-59-38](https://user-images.githubusercontent.com/71354878/236644408-60e23a99-84aa-4768-a54c-a073e97e3f81.png)
 
 ## Key methodology components
 
@@ -37,6 +37,8 @@ For both of them, we used the Adam optimizer to update the weights with a consta
 We used a SNN with one hidden fully-connected layer with 1024 hidden units. Note that all neurons operates with spikes.
 The following table and image represents the architecture of SNN.
 
+![snn](https://user-images.githubusercontent.com/71354878/236645095-3d747a24-8c98-4824-bcc1-0177b61baaab.png)
+
 | Layer | Parameters |
 |-------|-------|
 | Linear | input = 9409, output = 1024  |
@@ -48,6 +50,8 @@ The following table and image represents the architecture of SNN.
 - CNN
 We have constructed a CNN model with which we compared the SNN model described earlier. It consists of Convolutanal layer with ReLU activation function, MaxPool layer, Convolutanal layer with ReLU activation function, MaxPool layer, and two fully-connected layers. 
 The following table and image represents the architecture of CNN.
+
+![cnn](https://user-images.githubusercontent.com/71354878/236645117-ea1e3dbd-1f42-471d-9d1c-ca0bcf1bb502.png)
 
 | Layer | Parameters |
 |-------|-------|
@@ -65,7 +69,7 @@ As a result, the information is not stored in spikes, but rather in its frequenc
 
 We plotted the behavior of an LIF neuron receiving input spikes over 100 time steps.
 
-![Datasets](./vizualization.jpg)
+![image](https://user-images.githubusercontent.com/71354878/236644340-e6a9d116-4a46-4474-aab7-be98ebb0d8e7.png)
 
 
 ## Results
@@ -89,7 +93,6 @@ For SOCOFing dataset SNN model outperformed the CNN model and obtained the 98% a
 - PyTorch
 - NumPy
 - Matplotlib
-- Pandas
 - Kaggle API
 
 ## Usage
