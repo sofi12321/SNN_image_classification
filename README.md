@@ -27,7 +27,11 @@ that directly matches the MNIST dataset
 - Rate-encoding
 - LIF neuron model
 - Data preprocessing
+- Train/validation/test with snnTorch
+- CrossEntropy loss
+- Adam optimizer
 - SNN and CNN comparison
+
 
 ## Model architecture
 
