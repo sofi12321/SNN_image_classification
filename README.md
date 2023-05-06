@@ -1,7 +1,98 @@
 # SNN image classification
+Comparing Spiking Neural Network with Convolutional Neural Network for Image Classification using snnTorch
 
-Artificial neural networks, in particular deep neural networks, are widely used models for solving machine learning problems. However, such networks are not biologically plausible. Spiking neural networks, on the other hand, use different methods of encoding and processing data, which makes their behavior more similar to brain activity. This motivated us to explore them in more detail and to solve the image classification problem comparing the results of spiking neural network with convolution neural network.
+## Project Description
 
-The main framework of our project to create models is the Python package snnTorch. We used several datasets: SOCOFing, EMNIST, and Fashion-MNIST - to train and test our models. In the evaluation phase, we measured the accuracy, precision, recall, and F1-score for each case. From the results obtained for the SOCOFing dataset, we can conclude that SNN achieved higher results with an accuracy of 98% than CNN with an accuracy of 83%. For the EMNIST dataset, both models achieved high results with an accuracy of about 99%, but CNN performed a bit better. For the Fashion-MNIST dataset, the average accuracy of the models was approximately the same - 86%. However, the training of 1 epoch was more than 1.5 times longer with the SNN model.
+Artificial neural networks, including deep neural networks, are widely used for solving machine learning problems. However, these networks are not biologically plausible. Spiking neural networks (SNNs), on the other hand, use different methods of encoding and processing data, making their behavior more similar to brain activity. This motivated us to explore SNNs in more detail and compare their performance with convolutional neural networks (CNNs) in solving image classification problems.
 
-To run the program, one should use the token for Kaggle API. Using Kaggle's API, it is possible to download SOCOFing dataset.
+## Repository Contents
+
+- Jupyter notebook with code for implementing and evaluating the SNN and CNN models on the three datasets
+- README file with project details and description
+
+## Used datasets
+
+- SOCOFing -  biometric fingerprints and their syn-
+thetic alterations 
+- EMNIST - handwritten character
+digits derived from the NIST Special Database 19 and con-
+verted to a 28x28 pixel image format and dataset structure
+that directly matches the MNIST dataset 
+- Fashion-MNIST - Zalando’s article images
+
+![Datasets](./image.jpg)
+
+## Key methodology components
+
+- Rate-encoding
+- LIF neuron model
+- Data preprocessing
+- SNN and CNN comparison
+
+## Model architecture
+
+- SNN
+
+| Layer | Parameters |
+|-------|-------|
+| Linear | input = 9409, output = 1024  |
+| Leaky  | beta = 0.95 |
+| Linear | input = 1024, output = 10    |
+| Leaky  | beta = 0.95 |
+
+
+- CNN
+
+| Layer | Parameters |
+|-------|-------|
+| Conv2d | input channels = 1, output channels = 16, kernel size = (3, 3), stride = (1, 1), activation = ReLU  |
+| MaxPool2d  | kernel size = 2, stride = 2, padding = 0 |
+| Conv2d | input channels = 16, output channels = 32, kernel size = (3, 3), stride = (1, 1), activation = ReLU    |
+| MaxPool2d  | kernel size = 2, stride = 2, padding = 0 |
+| Linear | input = 15488, output = 1024, activation = ReLU  |
+| Linear | input = 1024, output = 10, activation = log softmax  |
+
+## Visualization of output neuron
+
+![Datasets](./vizualization.jpg)
+
+
+## Results
+
+| Dataset       | Model | Accuracy | Precision | Recall | F1-score |
+|-------------  |-------|----------|-----------|--------|----------|
+| SOCOFing      | SNN   | 0.98     | 0.98      | 0.98   | 0.98     |
+| SOCOFing      | CNN   | 0.83     | 0.84      | 0.82   | 0.83     |
+| EMNIST        | SNN   | 0.99     | 0.99      | 0.99   | 0.99     |
+| EMNIST        | CNN   | 0.99     | 0.99      | 0.99   | 0.99     |
+| Fashion-MNIST | SNN   | 0.86     | 0.86      | 0.87   | 0.86     |
+| Fashion-MNIST | CNN   | 0.86     | 0.86      | 0.86   | 0.86     |
+
+The training time for 1 epoch was more than 1.5 times longer for the SNN model.
+
+## Requirements
+
+- Python 3.x
+- snnTorch
+- PyTorch
+- NumPy
+- Matplotlib
+- Pandas
+- Kaggle API
+
+## Usage
+
+- Clone the repository to your local machine.
+- Install the required libraries.
+- Obtain a Kaggle API token to download the SOCOFing dataset.
+- Run the Jupyter notebook and follow the instructions to train and evaluate the SNN and CNN models on the three datasets.
+
+## Authors
+
+- [Danila Shulepin](https://github.com/D4ni1a)
+- [Sofi Zaitseva](https://github.com/sofi12321)
+- [Arsen Mutalapov](https://github.com/system205)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
