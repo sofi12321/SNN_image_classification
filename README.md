@@ -1,5 +1,5 @@
 # SNN image classification
-Comparing Spiking Neural Network with Convolutional Neural Network for Image Classification using snnTorch
+Comparison of Spiking Neural Network and Convolutional Neural Network for Image Classification using snnTorch.
 
 ## Project Description
 
@@ -12,13 +12,9 @@ Artificial neural networks, including deep neural networks, are widely used for 
 
 ## Used datasets
 
-- SOCOFing -  biometric fingerprints and their syn-
-thetic alterations 
-- EMNIST - handwritten character
-digits derived from the NIST Special Database 19 and con-
-verted to a 28x28 pixel image format and dataset structure
-that directly matches the MNIST dataset 
-- Fashion-MNIST - Zalando’s article images
+- SOCOFing - a set of biometric fingerprints and their synthetic alterations. With this dataset, we solve the problem of fingerprint image classification on 10 classes depending on the name of the finger.
+- EMNIST digits - a set of handwritten digits similar to the MNIST dataset, but 4 times larger. 
+- Fashion-MNIST - a set of 10 fashion products images. 
 
 ![Datasets](./image.jpg)
 
@@ -34,8 +30,12 @@ that directly matches the MNIST dataset
 
 
 ## Model architecture
+In this project, we created models of SNN and CNN. Used datasets has a different size of images, so models vary only in the number of neurons on the input layer in SNN and on first fully-connected layer in CNN.
+For both of them, we used the Adam optimizer to update the weights with a constant learning rate of 0.000085, a batch size of 128 and cross-entropy loss function. 
 
 - SNN
+We used a SNN with one hidden fully-connected layer with 1024 hidden units. Note that all neurons operates with spikes.
+The following table and image represents the architecture of SNN.
 
 | Layer | Parameters |
 |-------|-------|
@@ -46,6 +46,8 @@ that directly matches the MNIST dataset
 
 
 - CNN
+We have constructed a CNN model with which we compared the SNN model described earlier. It consists of Convolutanal layer with ReLU activation function, MaxPool layer, Convolutanal layer with ReLU activation function, MaxPool layer, and two fully-connected layers. 
+The following table and image represents the architecture of CNN.
 
 | Layer | Parameters |
 |-------|-------|
@@ -57,11 +59,18 @@ that directly matches the MNIST dataset
 | Linear | input = 1024, output = 10, activation = log softmax  |
 
 ## Visualization of output neuron
+Leaky Integrate-and-Fire (LIF) neuron receives the sum of the weighted input signals. LIF integrates the inputs over time. If the integrated value exceeds a predefined threshold, the LIF neuron produces a spike.
+
+As a result, the information is not stored in spikes, but rather in its frequency.
+
+We plotted the behavior of an LIF neuron receiving input spikes over 100 time steps.
 
 ![Datasets](./vizualization.jpg)
 
 
 ## Results
+
+For SOCOFing dataset SNN model outperformed the CNN model and obtained the 98% accuracy, in comparison with 83% for CNN. For both EMNIST, and Fashion-MNIST datasets SNN and CNN showed approximately the same results: 98% accuracy for EMNIST and 86% accuracy for Fashion-MNIST. However, training of one epoch for SNN was, on average, 1.5 times slower than for CNN.
 
 | Dataset       | Model | Accuracy | Precision | Recall | F1-score |
 |-------------  |-------|----------|-----------|--------|----------|
@@ -72,7 +81,6 @@ that directly matches the MNIST dataset
 | Fashion-MNIST | SNN   | 0.86     | 0.86      | 0.87   | 0.86     |
 | Fashion-MNIST | CNN   | 0.86     | 0.86      | 0.86   | 0.86     |
 
-The training time for 1 epoch was more than 1.5 times longer for the SNN model.
 
 ## Requirements
 
